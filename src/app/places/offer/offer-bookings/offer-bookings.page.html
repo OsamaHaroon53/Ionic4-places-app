@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/places/discover"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Offer Booking</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card>
+      <img [src]="place.url"/>
+      <ion-card-header>
+        <ion-card-title>{{place.title}} <ion-text float-right>{{place.price| currency}}</ion-text></ion-card-title>
+        
+      </ion-card-header>
+      <ion-card-content text-center>
+        <p>
+          {{place.description}}
+        </p>
+        <ion-button (click)="onEdit()">Edit</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
