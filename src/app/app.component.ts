@@ -50,6 +50,10 @@ export class AppComponent {
     });
   }
 
+  isLogin(){
+    return this.auth.isLogin();
+  }
+
   logOut(){
     this.auth.logOut();
     this.navCtrl.navigateRoot('/auth');

@@ -8,6 +8,10 @@
 </ion-header>
 
 <ion-content>
+  <ion-segment (ionChange)="filter($event)">
+    <ion-segment-button value="all" checked>All Places</ion-segment-button>
+    <ion-segment-button value="myBooking">My Places</ion-segment-button>
+  </ion-segment>
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2">
@@ -26,8 +30,8 @@
     </ion-row>
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2">
-        <ion-list>
-          <ion-item *ngFor="let place of places" detail [routerLink]="[place.id]">
+        <ion-virtual-scroll [items]="places">
+          <ion-item *virtualItem="let place" detail [routerLink]="[place.id]">
             <ion-thumbnail slot="start">
                 <ion-img [src]="place.url"></ion-img>
             </ion-thumbnail>
@@ -36,7 +40,7 @@
               <p>{{place.description}}</p>
             </ion-label>
           </ion-item>
-        </ion-list>
+        </ion-virtual-scroll>
       </ion-col>
     </ion-row>
   </ion-grid>

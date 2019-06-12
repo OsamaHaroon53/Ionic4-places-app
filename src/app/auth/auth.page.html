@@ -4,6 +4,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-button color="primary" (click)="login()" margin>LogIn</ion-button>
+<ion-content padding>
+  <form (submit)="login(f)" #f="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="email" ngModel name="email" required email #email="ngModel"></ion-input>
+      </ion-item>
+      <ion-item lines="none" *ngIf="email.errors && (email.touched || email.dirty)">
+        <ion-label color="danger" *ngIf="email.errors.required">Email is Required</ion-label>
+        <ion-label color="danger" *ngIf="email.errors.email">Email is Invalid</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" ngModel name="password" required minlength="8" #pass="ngModel"></ion-input>
+      </ion-item>
+      <ion-item lines="none" *ngIf="pass.errors && (pass.touched || pass.dirty)">
+        <ion-label color="danger" *ngIf="pass.errors.required">Password is Required</ion-label>
+        <ion-label color="danger" *ngIf="pass.errors.minlength">Password should be at leat 8 characters</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-button type="submit" color="primary" [disabled]="f.invalid && false" margin>LogIn</ion-button>
+  </form>
 </ion-content>
