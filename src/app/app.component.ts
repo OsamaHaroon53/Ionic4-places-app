@@ -13,14 +13,14 @@ export class AppComponent {
   public appPages = [
     {
       title: 'My Places',
-      url: '/places/offers',
+      url: '/bookings',
       icon: 'images'
     },
-    // {
-    //   title: 'Discover Places',
-    //   url: '/places/discover',
-    //   icon: 'search'
-    // },
+    {
+      title: 'Discover Places',
+      url: '/places/discover',
+      icon: 'search'
+    },
     {
       title: 'Account',
       url: '/places',
