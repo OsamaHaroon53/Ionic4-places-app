@@ -20,13 +20,23 @@
           
           <ion-item-sliding *ngFor="let place of places" #slide>
 
-              <ion-item detail [routerLink]="[place.id]">
+              <ion-item [routerLink]="[place.id]">
                   <ion-thumbnail slot="start">
                     <ion-img [src]="place.url"></ion-img>
                   </ion-thumbnail>
                   <ion-label>
-                    <h2>{{place.title}}</h2>
-                    <p>{{place.description}}</p>
+                    <h1>{{ place.title }}</h1>
+                    <div class="offer-details">
+                      <ion-icon name="calendar" style="font-size: x-large;" color="primary"></ion-icon>
+                      <ion-text color="tertiary" class="space-left">{{
+                        getDummyDate() | date
+                      }}</ion-text>
+                      <span class="space-left">to</span>
+                      <ion-icon name="calendar" style="font-size: x-large;" class="space-left" color="primary"></ion-icon>
+                      <ion-text color="tertiary" class="space-left">{{
+                        getDummyDate() | date
+                      }}</ion-text>
+                    </div>
                   </ion-label>
                 </ion-item>
           

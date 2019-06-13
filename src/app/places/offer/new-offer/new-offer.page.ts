@@ -36,5 +36,12 @@ export class NewOfferPage implements OnInit {
     })
   }
 
+  onCreateOffer() {
+    if (!this.place.valid) {
+      return;
+    }
+    console.log(this.place);
+  }
+
   
 }

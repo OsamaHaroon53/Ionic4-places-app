@@ -24,7 +24,8 @@ const routes: Routes = [
         children: [
           { path: '', loadChildren: './offer/offer.module#OfferPageModule'},
           { path: 'new', loadChildren: './offer/new-offer/new-offer.module#NewOfferPageModule'},
-          { path: ':placeId', loadChildren: './offer/offer-bookings/offer-bookings.module#OfferBookingsPageModule' }
+          { path: ':placeId', loadChildren: './offer/offer-bookings/offer-bookings.module#OfferBookingsPageModule' },
+          { path: 'edit-offer/:placeId', loadChildren: './offer/edit-offer/edit-offer.module#EditOfferPageModule' }
         ]
       },
       { path: '**', redirectTo: 'discover'}

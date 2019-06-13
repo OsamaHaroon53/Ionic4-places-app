@@ -15,17 +15,18 @@ export class OfferBookingsPage implements OnInit {
   constructor(private aR: ActivatedRoute, private navCtrl: NavController, private placesService: PlacesService) { }
 
   ngOnInit() {
-    this.aR.paramMap.subscribe(param=>{
-      if(!param.has('placeId')){
-        this.navCtrl.navigateBack('/places/discover')
+    this.aR.paramMap.subscribe(param => {
+      if (!param.has('placeId')) {
+        this.navCtrl.navigateBack('/places/offer')
         return;
       }
       this.place = this.placesService.getPlaceById(param.get('placeId'))
     })
   }
 
-  onEdit(){
-    this.navCtrl.navigateBack('/places/discover')
+  onEdit() {
+    console.log('edit',this.place.id)
+    this.navCtrl.navigateForward(['/', 'places', 'offers', 'edit-offer', this.place.id])
   }
 
 }

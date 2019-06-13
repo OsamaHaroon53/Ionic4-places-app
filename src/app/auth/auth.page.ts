@@ -10,6 +10,8 @@ import { NgForm } from '@angular/forms';
 })
 export class AuthPage implements OnInit {
 
+  isLogin = false;
+  
   constructor(private auth: AuthService, private navctrl: NavController) { }
 
   ngOnInit() {
@@ -24,6 +26,10 @@ export class AuthPage implements OnInit {
     console.log(email,password)
     this.auth.logIn();
     this.navctrl.navigateRoot('/places/discover');
+  }
+
+  onSwitchAuthMode() {
+    this.isLogin = !this.isLogin;
   }
 
 }
