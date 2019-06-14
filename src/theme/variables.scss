@@ -5,14 +5,14 @@
 :root {
   --ion-color-primary: #f83fca;
   --ion-color-primary-rgb: 248,63,202;
-  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 0,0,0;
   --ion-color-primary-shade: #da37b2;
   --ion-color-primary-tint: #f952cf;
 
   --ion-color-secondary: #ff80c0;
   --ion-color-secondary-rgb: 255,128,192;
-  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast: #ffffff;
   --ion-color-secondary-contrast-rgb: 0,0,0;
   --ion-color-secondary-shade: #e071a9;
   --ion-color-secondary-tint: #ff8dc6;
@@ -66,7 +66,7 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
-  // --ion-toolbar-background: #3880ff;
+  // --ion-toolbar-background: #f83fca;
 }
 
 .ion-touched.ion-invalid ion-label{

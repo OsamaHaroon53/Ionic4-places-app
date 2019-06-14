@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
-import { PlacesService } from 'src/app/providers/places.service';
+import { PlacesService } from 'src/app/providers/places/places.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({

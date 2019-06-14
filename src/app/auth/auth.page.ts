@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../providers/auth.service';
+import { AuthService } from '../providers/auth/auth.service';
 import { NavController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 

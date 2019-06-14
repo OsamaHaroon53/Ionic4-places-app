@@ -1,14 +1,17 @@
 <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="/places/discover"></ion-back-button>
+        <ion-back-button defaultHref="/places/offers"></ion-back-button>
       </ion-buttons>
       <ion-title>Offer Booking</ion-title>
     </ion-toolbar>
   </ion-header>
   
   <ion-content>
-    <ion-card>
+    <div text-center *ngIf="isLoading">
+      <ion-spinner color="primary"></ion-spinner>
+    </div>
+    <ion-card *ngIf="!isLoading && place">
       <img [src]="place.url" style="max-height: 380px;"/>
       <ion-card-header>
         <ion-card-title>{{place.title}} <ion-text float-right>{{place.price| currency}}</ion-text></ion-card-title>

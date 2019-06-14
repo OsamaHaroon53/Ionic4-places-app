@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, ModalController, ActionSheetController, LoadingController } from '@ionic/angular';
-import { PlacesService } from 'src/app/providers/places.service';
+import { NavController, ModalController, ActionSheetController, LoadingController, AlertController } from '@ionic/angular';
+import { PlacesService } from 'src/app/providers/places/places.service';
 import { ActivatedRoute } from '@angular/router';
 import { Place } from '../../place.model';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/providers/auth.service';
+import { AuthService } from 'src/app/providers/auth/auth.service';
 import { CreateBookingPage } from 'src/app/bookings/create-booking/create-booking.page';
 import { BookingService } from 'src/app/providers/booking/booking.service';
 
@@ -17,6 +17,7 @@ export class PlaceDetailPage implements OnInit {
 
   place: Place;
   isBookable = false;
+  isLoading: boolean = false;
   private placeSub: Subscription;
 
   constructor(
@@ -27,7 +28,8 @@ export class PlaceDetailPage implements OnInit {
     private actionSheetCtrl: ActionSheetController,
     private bookingService: BookingService,
     private loadingCtrl: LoadingController,
-    private authService: AuthService
+    private authService: AuthService,
+    private alertCtrl: AlertController
     ) { }
 
   ngOnInit() {
@@ -39,8 +41,33 @@ export class PlaceDetailPage implements OnInit {
       this.placeSub = this.placesService.getPlaceById(param.get('placeId')).subscribe(place=>{
         this.place = place;
         this.isBookable = place.userId !== this.authService.getUserId();
+      },
+      error => {
+        this.alertCtrl
+          .create({
+            header: 'An error occurred!',
+            message: 'Place could not be found. Please try again later.',
+            buttons: [
+              {
+                text: 'Okay',
+                handler: () => {
+                  this.navCtrl.navigateBack(['/places/discover']);
+                }
+              }
+            ]
+          })
+          .then(alertEl => {
+            alertEl.present();
+          });
       })
     })
+  }
+
+  ionViewWillEnter() {
+    this.isLoading = true;
+    this.placesService.fetchPlaces().subscribe(() => {
+      this.isLoading = false;
+    });
   }
 
   onBook(){
