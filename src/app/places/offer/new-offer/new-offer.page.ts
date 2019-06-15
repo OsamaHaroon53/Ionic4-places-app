@@ -13,7 +13,7 @@ export class NewOfferPage implements OnInit {
 
   place: FormGroup;
   constructor(private loadingCtrl: LoadingController, private aR: ActivatedRoute, private navCtrl: NavController, private placesService: PlacesService) {
-    
+
   }
 
   ngOnInit() {
@@ -32,7 +32,11 @@ export class NewOfferPage implements OnInit {
       }),
       dateTo: new FormControl(null, {
         validators: [Validators.required]
-      })
+      }),
+      location: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+
     })
   }
 
@@ -54,7 +58,8 @@ export class NewOfferPage implements OnInit {
             'https://www.thenews.com.pk//assets/uploads/updates/2019-03-19/446094_8279721_11_updates.jpg',
             +this.place.value.price,
             new Date(this.place.value.dateFrom),
-            new Date(this.place.value.dateTo)
+            new Date(this.place.value.dateTo),
+            this.place.value.location
           )
           .subscribe(() => {
             loadingEl.dismiss();
@@ -64,5 +69,10 @@ export class NewOfferPage implements OnInit {
       });
   }
 
-  
+  setLocation(location) {
+    console.log(location)
+    this.place.patchValue({ location: location })
+  }
+
+
 }

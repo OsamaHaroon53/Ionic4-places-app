@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/providers/auth/auth.service';
 import { CreateBookingPage } from 'src/app/bookings/create-booking/create-booking.page';
 import { BookingService } from 'src/app/providers/booking/booking.service';
+import { MapModalComponent } from 'src/app/shared/map-modal/map-modal.component';
 
 @Component({
   selector: 'app-place-detail',
@@ -133,6 +134,26 @@ export class PlaceDetailPage implements OnInit {
                 });
             });
         }
+      });
+  }
+
+  openMap(){
+    console.log(this.place.location);
+    this.modalCtrl
+      .create({
+        component: MapModalComponent,
+        componentProps: {
+          center: {
+            lat: this.place.location.lat,
+            lng: this.place.location.lng
+          },
+          selectable: false,
+          closeButtonText: 'Close',
+          title: this.place.location.address
+        }
+      })
+      .then(modalEl => {
+        modalEl.present();
       });
   }
 

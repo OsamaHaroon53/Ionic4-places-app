@@ -4,6 +4,7 @@ import { AuthService } from '../auth/auth.service';
 import { BehaviorSubject, of } from 'rxjs';
 import { take, map, tap, switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { PlaceLocation } from 'src/app/places/location.model';
 
 interface PlaceData {
   availableFrom: string;
@@ -13,6 +14,7 @@ interface PlaceData {
   price: number;
   title: string;
   userId: string;
+  location: PlaceLocation;
 }
 
 @Injectable({
@@ -48,6 +50,7 @@ export class PlacesService {
                   resData[key].userId,
                   new Date(resData[key].availableFrom),
                   new Date(resData[key].availableTo),
+                  resData[key].location,
                 )
               );
             }
@@ -77,14 +80,24 @@ export class PlacesService {
             placeData.userId,
             new Date(placeData.availableFrom),
             new Date(placeData.availableTo),
+            placeData.location,
           );
         })
       );
   }
 
-  addPlace(title, description, img, price, dateFrom, dateTo) {
+  addPlace(title, description, img, price, dateFrom, dateTo, location) {
     let id: string;
-    const newPlace = new Place(Math.random().toString(), title, description, img, price, this.auth.getUserId(), dateFrom, dateTo);
+    const newPlace = new Place(
+      Math.random().toString(),
+      title,
+      description,
+      img,
+      price,
+      this.auth.getUserId(),
+      dateFrom, dateTo,
+      location
+    );
     return this.http.post<{ name: string }>(`${this.baseUrl}.json`, { ...newPlace, id: null })
       .pipe(
         switchMap(res => {
@@ -123,6 +136,7 @@ export class PlacesService {
           oldPlace.userId,
           oldPlace.availableFrom,
           oldPlace.availableTo,
+          oldPlace.location,
         );
         return this.http.put(
           `${this.baseUrl}/${placeId}.json`,
