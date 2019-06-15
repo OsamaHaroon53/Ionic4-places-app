@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tour World</string>
+    <string name="title_activity_main">Tour World</string>
+    <string name="package_name">com.tourworld.com</string>
+    <string name="fileprovider_authority">com.tourworld.com.fileprovider</string>
+    <string name="custom_url_scheme">com.tourworld.com</string>
+</resources>

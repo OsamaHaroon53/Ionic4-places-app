@@ -86,6 +86,16 @@ export class PlacesService {
       );
   }
 
+  uploadImage(image: File) {
+    const uploadData = new FormData();
+    uploadData.append('image', image);
+
+    return this.http.post<{imageUrl: string, imagePath: string}>(
+      'https://us-central1-places-ionic-app.cloudfunctions.net/storeImage',
+      uploadData
+    );
+  }
+
   addPlace(title, description, img, price, dateFrom, dateTo, location) {
     let id: string;
     const newPlace = new Place(

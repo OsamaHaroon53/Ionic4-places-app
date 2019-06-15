@@ -1,0 +1,7 @@
+{
+  "appId": "com.tourworld.com",
+  "appName": "Tour World",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
