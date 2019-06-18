@@ -42,7 +42,7 @@ export class BookingService {
     const newBooking = new Booking(
       '',
       placeId,
-      this.authService.userId,
+      this.authService.getUserId(),
       placeTitle,
       placeImage,
       firstName,
@@ -86,7 +86,7 @@ export class BookingService {
     return this.http
       .get<{ [key: string]: BookingData }>(
         `${this.baseUrl}.json?orderBy="userId"&equalTo="${
-        this.authService.userId
+        this.authService.getUserId()
         }"`
       )
       .pipe(

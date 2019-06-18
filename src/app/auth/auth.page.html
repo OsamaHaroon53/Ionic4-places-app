@@ -7,6 +7,11 @@
 <ion-content padding>
   <form (submit)="login(f)" #f="ngForm">
     <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col size-sm="6">
+          <ion-img src="assets/icon/icon.png" style="height: 200px;"></ion-img>
+        </ion-col>
+      </ion-row>
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
           <ion-list>
@@ -32,10 +37,10 @@
       </ion-row>
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
-          <ion-button type="button" color="primary" fill="clear" expand="block" (click)="onSwitchAuthMode()">
+          <ion-button type="button" color="primary" fill="clear" expand="block" (click)="onSwitchAuthMode(f)">
             Switch to {{ isLogin ? 'Login': 'Signup' }}
           </ion-button>
-          <ion-button type="submit" color="primary" [disabled]="f.invalid && false" expand="block" margin>{{ isLogin ? 'Signup' : 'Login' }}</ion-button>
+          <ion-button type="submit" color="primary" [disabled]="f.invalid" expand="block" margin>{{ isLogin ? 'Signup' : 'Login' }}</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

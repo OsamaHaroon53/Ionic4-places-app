@@ -8,9 +8,9 @@ const routes: Routes = [
     redirectTo: 'places',
     pathMatch: 'full'
   },
-  { path: 'places', loadChildren: './places/places.module#PlacesPageModule',  },
+  { path: 'places', loadChildren: './places/places.module#PlacesPageModule', canActivate: [AuthGuard] },
   { path: 'auth', loadChildren: './auth/auth.module#AuthPageModule' },
-  { path: 'bookings', loadChildren: './bookings/bookings.module#BookingsPageModule',  },
+  { path: 'bookings', loadChildren: './bookings/bookings.module#BookingsPageModule', canActivate: [AuthGuard] },
 ];
 
 @NgModule({

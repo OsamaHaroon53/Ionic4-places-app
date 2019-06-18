@@ -1,7 +1,8 @@
 {
   "name": "ionic4-app",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

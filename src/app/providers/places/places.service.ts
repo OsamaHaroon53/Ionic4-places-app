@@ -105,7 +105,8 @@ export class PlacesService {
       img,
       price,
       this.auth.getUserId(),
-      dateFrom, dateTo,
+      dateFrom,
+      dateTo,
       location
     );
     return this.http.post<{ name: string }>(`${this.baseUrl}.json`, { ...newPlace, id: null })

@@ -34,6 +34,7 @@ function base64toBlob(base64Data, contentType) {
 export class NewOfferPage implements OnInit {
 
   place: FormGroup;
+  todayDate = new Date().toISOString();
   constructor(private loadingCtrl: LoadingController, private aR: ActivatedRoute, private navCtrl: NavController, private placesService: PlacesService) {
 
   }
@@ -59,7 +60,8 @@ export class NewOfferPage implements OnInit {
         validators: [Validators.required]
       }),
       image: new FormControl(null),
-    })
+    });
+    
   }
 
   onCreateOffer() {
@@ -79,11 +81,11 @@ export class NewOfferPage implements OnInit {
               return this.placesService.addPlace(
                 this.place.value.title,
                 this.place.value.description,
+                uploadRes.imageUrl,
                 +this.place.value.price,
                 new Date(this.place.value.dateFrom),
                 new Date(this.place.value.dateTo),
                 this.place.value.location,
-                uploadRes.imageUrl
               );
             })
           )

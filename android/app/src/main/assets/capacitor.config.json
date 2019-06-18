@@ -1,6 +1,6 @@
 {
-  "appId": "com.tourworld.com",
-  "appName": "Tour World",
+  "appId": "io.ionic.starter",
+  "appName": "ionic4-app",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www"
